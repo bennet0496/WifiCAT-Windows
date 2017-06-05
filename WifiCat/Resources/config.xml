@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="ssid">pks-members</string>
+  <string name="anonymous_identity">anonymous</string>
+  <!--
+  According to https://developer.android.com/reference/android/net/wifi/WifiEnterpriseConfig.Eap.html
+  one of
+  
+	  AKA
+			EAP-Authentication and Key Agreement [RFC-4187]
+			Constant Value: 5 (0x00000005)
+
+	  AKA_PRIME
+			EAP-Authentication and Key Agreement Prime [RFC-5448]
+			Constant Value: 6 (0x00000006)
+
+	  NONE
+			No EAP method used. Represents an empty config
+			Constant Value: -1 (0xffffffff)
+
+	  PEAP
+			Protected EAP
+			Constant Value: 0 (0x00000000)
+
+	  PWD
+			EAP-Password
+			Constant Value: 3 (0x00000003)
+
+	  SIM
+			EAP-Subscriber Identity Module [RFC-4186]
+			Constant Value: 4 (0x00000004)
+
+	  TLS
+			EAP-Transport Layer Security
+			Constant Value: 1 (0x00000001)
+
+	  TTLS
+			EAP-Tunneled Transport Layer Security
+			Constant Value: 2 (0x00000002)
+
+	  UNAUTH_TLS
+			Hotspot 2.0 r2 OSEN
+			Constant Value: 7 (0x00000007)
+  -->
+  <integer name="eap_method">0</integer>
+  <!--
+  According to https://developer.android.com/reference/android/net/wifi/WifiEnterpriseConfig.Phase2.html
+  one of
+  
+	  AKA
+			EAP-Authentication and Key Agreement [RFC-4187]
+			Constant Value: 6 (0x00000006)
+
+	  AKA_PRIME
+			EAP-Authentication and Key Agreement Prime [RFC-5448]
+			Constant Value: 7 (0x00000007)
+
+	  GTC
+			Generic Token Card
+			Constant Value: 4 (0x00000004)
+
+	  MSCHAP
+			Microsoft Challenge Handshake Authentication Protocol
+			Constant Value: 2 (0x00000002)
+
+	  MSCHAPV2
+			Microsoft Challenge Handshake Authentication Protocol v2
+			Constant Value: 3 (0x00000003)
+
+	  NONE
+		  Constant Value: 0 (0x00000000)
+
+	  PAP
+			Password Authentication Protocol
+			Constant Value: 1 (0x00000001)
+
+	  SIM
+			EAP-Subscriber Identity Module [RFC-4186]
+			Constant Value: 5 (0x00000005)
+  -->
+  <integer name="phase2_method">3</integer>
+  <!--PEM Encoded-->
+  <string name="ca_certificate"></string>
+  <string name="user_certificate"></string>
+  <string name="domain"></string>
+  
+  
+  <bool name="disallow_paste">false</bool>
+  <bool name="require_pin">false</bool>
+  <bool name="disallow_root">false</bool>
+</resources>

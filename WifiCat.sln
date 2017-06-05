@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WifiCat", "WifiCat\WifiCat.csproj", "{4BFCCF3A-B858-40E8-9EC4-3614CE4ABFEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WifiTest", "WifiTest\WifiTest.csproj", "{4800F21F-48B3-4286-A295-5AB001D533B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4BFCCF3A-B858-40E8-9EC4-3614CE4ABFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BFCCF3A-B858-40E8-9EC4-3614CE4ABFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BFCCF3A-B858-40E8-9EC4-3614CE4ABFEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4800F21F-48B3-4286-A295-5AB001D533B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4800F21F-48B3-4286-A295-5AB001D533B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4800F21F-48B3-4286-A295-5AB001D533B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4800F21F-48B3-4286-A295-5AB001D533B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
