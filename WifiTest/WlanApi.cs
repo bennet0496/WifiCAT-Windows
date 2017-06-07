@@ -475,6 +475,13 @@ namespace NativeWifi
 				return reasonCode;
 			}
 
+		    public void SetProfileEapXmlUserData(Wlan.WlanProfileEapXmlUserDataFlags flags, string profileName,
+		        string eapXmlUserData)
+		    {
+                Wlan.ThrowIfError(
+                    Wlan.WlanSetProfileEapXmlUserData(client.clientHandle,info.interfaceGuid,profileName,flags,eapXmlUserData,IntPtr.Zero));
+		    }
+
 			/// <summary>
 			/// Gets the profile's XML specification.
 			/// </summary>

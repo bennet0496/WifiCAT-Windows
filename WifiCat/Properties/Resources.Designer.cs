@@ -61,11 +61,66 @@ namespace WifiCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;!-- Sample EAP user data: EAP_UserData.xml&quot; --&gt;
+        ///&lt;EapHostUserCredentials
+        ///  xmlns=&quot;http://www.microsoft.com/provisioning/EapHostUserCredentials&quot;
+        ///  xmlns:eapCommon=&quot;http://www.microsoft.com/provisioning/EapCommon&quot;
+        ///  xmlns:baseEap=&quot;http://www.microsoft.com/provisioning/BaseEapMethodUserCredentials&quot;&gt;
+        ///  &lt;EapMethod&gt;
+        ///    &lt;eapCommon:Type&gt;25&lt;/eapCommon:Type&gt;
+        ///    &lt;eapCommon:AuthorId&gt;0&lt;/eapCommon:AuthorId&gt;
+        ///  &lt;/EapMethod&gt;
+        ///  &lt;Credentials
+        ///    xmlns:eapUser=&quot;http://www.microsoft.com/provis [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string config {
+        internal static string default_eap_userdata {
             get {
-                return ResourceManager.GetString("config", resourceCulture);
+                return ResourceManager.GetString("default_eap_userdata", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        internal static string FormInstallNetwork_b_install_network_Click_Done {
+            get {
+                return ResourceManager.GetString("FormInstallNetwork_b_install_network_Click_Done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Installed successfully!.
+        /// </summary>
+        internal static string FormInstallNetwork_b_install_network_Click_Network_Installed_successfully_ {
+            get {
+                return ResourceManager.GetString("FormInstallNetwork_b_install_network_Click_Network_Installed_successfully_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;WLANProfile xmlns=&quot;http://www.microsoft.com/networking/WLAN/profile/v1&quot;&gt;
+        ///	&lt;name&gt;pks-members&lt;/name&gt;
+        ///	&lt;SSIDConfig&gt;
+        ///		&lt;SSID&gt;
+        ///			&lt;hex&gt;706B732D6D656D62657273&lt;/hex&gt;
+        ///			&lt;name&gt;pks-members&lt;/name&gt;
+        ///		&lt;/SSID&gt;
+        ///		&lt;nonBroadcast&gt;false&lt;/nonBroadcast&gt;
+        ///	&lt;/SSIDConfig&gt;
+        ///	&lt;connectionType&gt;ESS&lt;/connectionType&gt;
+        ///	&lt;connectionMode&gt;auto&lt;/connectionMode&gt;
+        ///	&lt;autoSwitch&gt;false&lt;/autoSwitch&gt;
+        ///	&lt;MSM&gt;
+        ///		&lt;security&gt;
+        ///			&lt;authEncryption&gt;
+        ///				&lt;authentication&gt;WPA2&lt;/authentication&gt;
+        ///				&lt;encryption&gt;AES&lt;/encryption&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string profile {
+            get {
+                return ResourceManager.GetString("profile", resourceCulture);
             }
         }
         

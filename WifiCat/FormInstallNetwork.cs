@@ -1,38 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
+using NativeWifi;
+using WifiCat.Properties;
 
 namespace WifiCat
 {
     public partial class FormInstallNetwork : Form
     {
-        private Dictionary<int, int> translateEapDictionary = new Dictionary<int, int>()
-        {
-            {5,50},{-1,-1},{0,25},{3,47},{4,18},{1,13},{2,21}
-        };
-
-        private XDocument xmlDocument;
-        private string Ssid;
-        private string AnonymousIdentity;
-
-        private int EapMethod;
-        private int Phase2Method;
-
-        private string CaCertificate;
-        private string UserCertificate;
-
-        private string Domain;
-
-        private bool DisallowPaste;
-        private bool RequirePin;
+        private WlanClient wlanClient;
 
         public FormInstallNetwork()
         {
@@ -46,79 +24,86 @@ namespace WifiCat
 
         private void FormInstallNetwork_Load(object sender, EventArgs e)
         {
-            EAPConfig eapConfig = new EAPConfig();
-            xmlDocument = new XDocument(
-                new XDeclaration("1.0","utf-8", String.Empty),
-                new XElement("WLANProfile",
-                    new XElement("connectionType", "ESS"),
-                    new XElement("connectionMode", "auto"),
-                    new XElement("autoSwitch", "false"),
-                    new XElement("MSM",
-                        new XElement("security",
-                            new XElement("authEncryption",
-                                new XElement("authentication", "WPA2"),
-                                new XElement("encryption", "AES"),
-                                new XElement("useOneX", "true"),
-                                new XElement("FIPSMode", "false")),
-                            new XElement("PMKCacheMode", "disabled"),
-                            new XElement("OneX",
-                                new XElement("cacheUserData", "true"),
-                                new XElement("authMode", "user"),
-                                eapConfig))))
-                );
-           
-            XmlDocument xmlConfig = new XmlDataDocument();
-            xmlConfig.LoadXml(Properties.Resources.config);
-            XmlNodeList config = xmlConfig.GetElementsByTagName("resources");
+            wlanClient = new WlanClient();
+            cb_wifiinterface.DataSource = wlanClient.Interfaces;
 
-            foreach (XmlNode node in config[0].ChildNodes)
+            cb_wifiinterface.DisplayMember = "DisplayName";
+        }
+
+        private void tb_username_KeyDown(object sender, KeyEventArgs e)
+        {
+#if (DISALLOW_PASTE)
+            if (e.KeyData == (Keys.Control | Keys.V))
             {
-                if (node.NodeType == XmlNodeType.Element)
-                switch (node.Attributes["name"].Value)
-                {
-                    case "ssid":
-                        Ssid = node.InnerText;
-                        break;
-                    case "anonymous_identity":
-                        AnonymousIdentity = node.InnerText;
-                        break;
-                    case "eap_method":
-                        eapConfig.setEapMethod((EAPConfig.EAPMethod)translateEapDictionary[Convert.ToInt32(node.InnerText)]);
-                        break;
-                    case "phase2_method":
-                        break;
-                    case "ca_certificate":
-                        break;
-
-                }
+                e.Handled = false;
+            }
+            #endif
+            if (e.KeyData == (Keys.Control | Keys.Back))
+                tb_username.Text = tb_password.Text.Substring(tb_password.SelectionStart);
+            if (e.KeyData == (Keys.Control | Keys.Delete))
+            {
+                var i = tb_username.SelectionStart;
+                tb_username.Text = tb_password.Text.Substring(0, tb_username.SelectionStart);
+                tb_username.SelectionStart = i;
             }
         }
 
-        internal class EAPConfig
+        private void tb_password_KeyDown(object sender, KeyEventArgs e)
         {
-            private XElement xmlElement;
-
-            public EAPConfig()
+#if (DISALLOW_PASTE)
+            if (e.KeyData == (Keys.Control | Keys.V))
             {
-                xmlElement = new XElement("EAPConfig", new XElement("EAPHostConfig", String.Empty));
+                e.Handled = false;
+            }
+            #endif
+            if (e.KeyData == (Keys.Control | Keys.Back))
+                tb_password.Text = tb_password.Text.Substring(tb_password.SelectionStart);
+            if (e.KeyData == (Keys.Control | Keys.Delete))
+            {
+                var i = tb_password.SelectionStart;
+                tb_password.Text = tb_password.Text.Substring(0, tb_password.SelectionStart);
+                tb_password.SelectionStart = i;
+            }
+        }
+
+        private void b_install_network_Click(object sender, EventArgs e)
+        {
+            var name = (from el in XDocument.Parse(Resources.profile).Root.Elements()
+                where el.Name.LocalName.Equals("name")
+                select el.Value).FirstOrDefault();
+
+            var profileXml =
+                Resources.default_eap_userdata.Replace("{USERNAME}", tb_username.Text)
+                    .Replace("{PASSWORD}", tb_password.Text).Replace("{SSID}", name);
+            var instProf =
+                ((WlanClient.WlanInterface) cb_wifiinterface.SelectedItem).SetProfile(Wlan.WlanProfileFlags.AllUser,
+                    Resources.profile, true);
+            var s = true;
+            try
+            {
+                ((WlanClient.WlanInterface) cb_wifiinterface.SelectedItem).SetProfileEapXmlUserData(
+                    Wlan.WlanProfileEapXmlUserDataFlags.Zero,
+                    name,
+                    profileXml);
+            }
+            catch (Exception err)
+            {
+                s = false;
             }
 
-            public void setEapMethod(EAPMethod method)
+            if (instProf == Wlan.WlanReasonCode.Success && s)
             {
-                var type = new XElement("Type", (int) method);
-                type.SetAttributeValue("xmlns", "http://www.microsoft.com/provisioning/EapCommon");
-                ((XElement)xmlElement.FirstNode).Add(new XElement("EAPMethod", type));
+                MessageBox.Show(Resources.FormInstallNetwork_b_install_network_Click_Network_Installed_successfully_,
+                    Resources.FormInstallNetwork_b_install_network_Click_Done, MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                tb_username.Enabled = false;
+                tb_password.Enabled = false;
+                cb_wifiinterface.Enabled = false;
+                b_install_network.Enabled = false;
             }
-
-            public enum EAPMethod
+            else
             {
-                AKA = 50,
-                NONE = -1,
-                PEAP = 25,
-                PWD = 47,
-                SIM = 18,
-                TLS = 13,
-                TTLS = 21
+                MessageBox.Show("error");
             }
         }
     }

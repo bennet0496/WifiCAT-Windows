@@ -344,6 +344,22 @@ namespace NativeWifi
 			[In] IntPtr pReserved,
 			[Out] out WlanReasonCode reasonCode);
 
+	    [Flags]
+	    public enum WlanProfileEapXmlUserDataFlags
+	    {
+	        AllUser = 1,
+	    }
+
+	    [DllImport("wlanapi.dll")]
+	    public static extern int WlanSetProfileEapXmlUserData(
+	        [In] IntPtr clientHandle,
+	        [In, MarshalAs(UnmanagedType.LPStruct)] Guid interfaceGuid,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string profileName,
+            [In] WlanProfileEapXmlUserDataFlags flags,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string eapXmlUserData,
+            [In] IntPtr pReserved
+        );
+
 		/// <summary>
 		/// Defines the access mask of an all-user profile.
 		/// </summary>
