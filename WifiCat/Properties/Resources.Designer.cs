@@ -125,6 +125,15 @@ namespace WifiCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to pks-guest.
+        /// </summary>
+        internal static string SSID_TO_DELETE {
+            get {
+                return ResourceManager.GetString("SSID_TO_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap wifi_icon {

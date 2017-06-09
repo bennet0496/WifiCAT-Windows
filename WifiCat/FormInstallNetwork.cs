@@ -100,6 +100,7 @@ namespace WifiCat
                 tb_password.Enabled = false;
                 cb_wifiinterface.Enabled = false;
                 b_install_network.Enabled = false;
+                ((WlanClient.WlanInterface)cb_wifiinterface.SelectedItem).DeleteProfile(Properties.Resources.SSID_TO_DELETE);
             }
             else
             {

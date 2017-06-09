@@ -133,4 +133,7 @@
   <data name="FormInstallNetwork_b_install_network_Click_Done" xml:space="preserve">
     <value>Done</value>
   </data>
+  <data name="SSID_TO_DELETE" xml:space="preserve">
+    <value>pks-guest</value>
+  </data>
 </root>
