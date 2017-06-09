@@ -16,3 +16,6 @@ version_select:
 	xbuild /target:"Wifi Cat Version Selector" /p:TargetFrameworkVersion="v4.0" /p:Configuration=Release /p:Platform="Any CPU" /p:WarningLevel=0 /verbosity:full
 	mkdir -p out
 	cp -v Wifi\ Cat\ Version\ Selector/bin/Release/Wifi\ Cat\ Version\ Selector.exe out/wificat_version_select_windows.exe
+
+edit_url:
+	editor + Wifi\ Cat\ Version\ Selector/Properties/Resources.resx
