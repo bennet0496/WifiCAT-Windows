@@ -7,7 +7,7 @@
     <ProjectGuid>{DB6F0375-8427-49F8-8FB3-703A7A01C7FC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Wifi_Cat_Version_Selector</RootNamespace>
-    <AssemblyName>Wifi Cat Version Selector</AssemblyName>
+    <AssemblyName>WifiCatVersionSelector</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
