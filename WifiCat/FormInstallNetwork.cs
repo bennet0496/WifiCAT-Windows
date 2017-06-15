@@ -117,6 +117,11 @@ namespace WifiCat
             {
                 s = false;
             }
+            try
+            {
+                ((WlanClient.WlanInterface) cb_wifiinterface.SelectedItem).DeleteProfile(Resources.SSID_TO_DELETE);
+            }
+            catch { }
 
             if (instProf == Wlan.WlanReasonCode.Success && s)
             {
@@ -127,7 +132,6 @@ namespace WifiCat
                 tb_password.Enabled = false;
                 cb_wifiinterface.Enabled = false;
                 b_install_network.Enabled = false;
-                ((WlanClient.WlanInterface) cb_wifiinterface.SelectedItem).DeleteProfile(Resources.SSID_TO_DELETE);
             }
             else
             {
