@@ -22,14 +22,14 @@ namespace Wifi_Cat_Version_Selector.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Config {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Config() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Wifi_Cat_Version_Selector.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Wifi_Cat_Version_Selector.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Wifi_Cat_Version_Selector.Properties.Config", typeof(Config).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,24 @@ namespace Wifi_Cat_Version_Selector.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to file:///C:/temp/x86/WifiCat.exe.
+        /// </summary>
+        internal static string URL32 {
+            get {
+                return ResourceManager.GetString("URL32", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to file:///C:/temp/x64/WifiCat.exe.
+        /// </summary>
+        internal static string URL64 {
+            get {
+                return ResourceManager.GetString("URL64", resourceCulture);
             }
         }
     }

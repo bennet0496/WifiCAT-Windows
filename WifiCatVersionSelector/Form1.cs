@@ -50,11 +50,11 @@ namespace Wifi_Cat_Version_Selector
                 wc.DownloadProgressChanged += wc_DownloadProgressChanged;
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    wc.DownloadFileAsync(new Uri(Resources.URL64), Path.GetTempPath() + "wificat.exe");
+                    wc.DownloadFileAsync(new Uri(Config.URL64), Path.GetTempPath() + "wificat.exe");
                 }
                 else
                 {
-                    wc.DownloadFileAsync(new Uri(Resources.URL32), Path.GetTempPath() + "wificat.exe");
+                    wc.DownloadFileAsync(new Uri(Config.URL32), Path.GetTempPath() + "wificat.exe");
                 }
                 wc.DownloadFileCompleted += wc_DownloadFileCompleted;
             }

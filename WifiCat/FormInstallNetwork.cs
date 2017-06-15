@@ -119,7 +119,7 @@ namespace WifiCat
             }
             try
             {
-                ((WlanClient.WlanInterface) cb_wifiinterface.SelectedItem).DeleteProfile(Resources.SSID_TO_DELETE);
+                ((WlanClient.WlanInterface) cb_wifiinterface.SelectedItem).DeleteProfile(Properties.Config.SSID_TO_DELETE);
             }
             catch { }
 

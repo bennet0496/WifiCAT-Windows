@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="URL32" xml:space="preserve">
+    <value>file:///C:/temp/x86/WifiCat.exe</value>
+  </data>
+  <data name="URL64" xml:space="preserve">
+    <value>file:///C:/temp/x64/WifiCat.exe</value>
+  </data>
 </root>
